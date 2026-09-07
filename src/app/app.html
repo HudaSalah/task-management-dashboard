@@ -5,6 +5,19 @@
     <app-sidebar (newTask)="openCreateTaskDialog()" />
 
     <main class="dashboard">
+      <router-outlet />
+    </main>
+  </div>
+</div>
+
+
+<!-- <div class="app-shell">
+  <app-header />
+
+  <div class="app-shell__body">
+    <app-sidebar (newTask)="openCreateTaskDialog()" />
+
+    <main class="dashboard">
 
       @if (isLoading()) {
         <div class="dashboard__state">
@@ -23,30 +36,42 @@
           }
         </div>
 
+        <app-filter-bar
+          [filters]="filters()"
+          (filtersChange)="onFiltersChange($event)"
+          (newTask)="openCreateTaskDialog()"
+        />
+
         <div class="dashboard__board">
-          <app-kanban-column
-            title="To Do"
-            dotColor="#3b82f6"
-            [tasks]="todoTasks()"
-            (editTask)="openEditTaskDialog($event)"
-            (deleteTask)="confirmDeleteTask($event)"
-          />
-          <app-kanban-column
-            title="In Progress"
-            dotColor="#f59e0b"
-            [tasks]="inProgressTasks()"
-            (editTask)="openEditTaskDialog($event)"
-            (deleteTask)="confirmDeleteTask($event)"
-          />
-          <app-kanban-column
-            title="Done"
-            dotColor="#16a34a"
-            [tasks]="doneTasks()"
-            (editTask)="openEditTaskDialog($event)"
-            (deleteTask)="confirmDeleteTask($event)"
-          />
+          @if (showTodoColumn()) {
+            <app-kanban-column
+              title="To Do"
+              dotColor="#3b82f6"
+              [tasks]="todoTasks()"
+              (editTask)="openEditTaskDialog($event)"
+              (deleteTask)="confirmDeleteTask($event)"
+            />
+          }
+          @if (showInProgressColumn()) {
+            <app-kanban-column
+              title="In Progress"
+              dotColor="#f59e0b"
+              [tasks]="inProgressTasks()"
+              (editTask)="openEditTaskDialog($event)"
+              (deleteTask)="confirmDeleteTask($event)"
+            />
+          }
+          @if (showDoneColumn()) {
+            <app-kanban-column
+              title="Done"
+              dotColor="#16a34a"
+              [tasks]="doneTasks()"
+              (editTask)="openEditTaskDialog($event)"
+              (deleteTask)="confirmDeleteTask($event)"
+            />
+          }
         </div>
       }
     </main>
   </div>
-</div>
+</div> -->

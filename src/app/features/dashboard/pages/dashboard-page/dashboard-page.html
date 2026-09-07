@@ -1,0 +1,17 @@
+@if (isLoading()) {
+  <div class="dashboard-page__state">
+    <mat-spinner diameter="36" />
+    <p>Loading dashboard…</p>
+  </div>
+} @else if (error()) {
+  <div class="dashboard-page__state">
+    <p>Something went wrong while loading the dashboard.</p>
+    <button mat-stroked-button color="primary" (click)="retry()">Retry</button>
+  </div>
+} @else {
+  <div class="dashboard-page__stats-row">
+    @for (stat of statistics(); track stat.id) {
+      <app-stat-card [statistic]="stat" />
+    }
+  </div>
+}

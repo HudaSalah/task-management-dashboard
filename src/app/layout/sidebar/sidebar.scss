@@ -24,14 +24,13 @@
     display: flex;
     align-items: center;
     gap: v.$spacing-sm;
-    padding: v.$spacing-md;
-    border-radius: v.$radius-sm;
+    padding: v.$spacing-sm v.$spacing-sm;
+    border-radius: v.$radius-md;
     color: v.$color-text-primary;
     font-size: v.$font-size-md;
-    font-weight: v.$font-weight-regular;
+    font-weight: v.$font-weight-medium;
     text-decoration: none;
     cursor: pointer;
-    font-family: monospace;
 
     mat-icon {
       font-size: 20px;
@@ -56,6 +55,15 @@
         background: v.$color-primary;
       }
     }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      &:hover {
+        background: transparent;
+      }
+    }
   }
 
   &__new-task {
@@ -65,4 +73,4 @@
     background: v.$color-primary !important;
     color: v.$color-text-inverse !important;
   }
-}
+}  

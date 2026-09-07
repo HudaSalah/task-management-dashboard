@@ -1,0 +1,34 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.dashboard-page {
+  &__title {
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+    margin: 0 0 v.$spacing-lg;
+  }
+
+  &__stats-row {
+    display: flex;
+    gap: v.$spacing-md;
+    flex-wrap: wrap;
+
+    app-stat-card {
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+  }
+
+  &__state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$spacing-md;
+    padding: v.$spacing-xl * 2 0;
+    color: v.$color-text-secondary;
+  }
+}
