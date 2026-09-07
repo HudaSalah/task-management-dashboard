@@ -1,0 +1,15 @@
+<div class="kanban-column">
+  <div class="kanban-column__header">
+    <span class="kanban-column__dot" [style.background]="dotColor()"></span>
+    <span class="kanban-column__title">{{ title() }}</span>
+    <span class="kanban-column__count">{{ tasks().length }}</span>
+  </div>
+
+  <div class="kanban-column__list">
+    @for (task of tasks(); track trackByTaskId($index, task)) {
+      <app-task-card [task]="task" (edit)="editTask.emit($event)" (delete)="deleteTask.emit($event)" />
+    } @empty {
+      <p class="kanban-column__empty">No tasks here.</p>
+    }
+  </div>
+</div>

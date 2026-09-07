@@ -1,0 +1,72 @@
+@use 'variables' as v;
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  padding: v.$spacing-md;
+  box-sizing: border-box;
+}
+
+.kanban-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-xs + 2px;
+    margin-bottom: v.$spacing-md;
+    padding-bottom: v.$spacing-xs;
+   border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: v.$color-text-secondary;
+  }
+
+  &__count {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: v.$radius-lg;
+    background: v.$color-page-background;
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-semibold;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__empty {
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+    text-align: center;
+    padding: v.$spacing-lg 0;
+  }
+}
