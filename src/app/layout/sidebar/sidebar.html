@@ -1,0 +1,15 @@
+<aside class="app-sidebar">
+  <nav class="app-sidebar__nav">
+    @for (item of navItems; track item.label) {
+      <a class="app-sidebar__link" [class.app-sidebar__link--active]="item.active">
+        <mat-icon [style.color]="item.active ? null : item.color">{{ item.icon }}</mat-icon>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+
+  <button mat-raised-button color="primary" class="app-sidebar__new-task" (click)="newTask.emit()">
+    <mat-icon>add</mat-icon>
+    New Task
+  </button>
+</aside>

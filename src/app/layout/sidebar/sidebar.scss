@@ -1,0 +1,68 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.app-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 100%;
+  padding: v.$spacing-lg v.$spacing-md;
+  background: v.$color-surface;
+  border-right: 1px solid v.$color-border;
+  box-sizing: border-box;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+    padding: v.$spacing-md;
+    border-radius: v.$radius-sm;
+    color: v.$color-text-primary;
+    font-size: v.$font-size-md;
+    font-weight: v.$font-weight-regular;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: monospace;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: v.$color-text-secondary;
+    }
+
+    &:hover {
+      background: v.$color-page-background;
+    }
+
+    &--active {
+      background: v.$color-primary;
+      color: v.$color-text-inverse;
+
+      mat-icon {
+        color: v.$color-text-inverse;
+      }
+
+      &:hover {
+        background: v.$color-primary;
+      }
+    }
+  }
+
+  &__new-task {
+    margin-top: v.$spacing-lg;
+    width: 100%;
+    border-radius: v.$radius-sm;
+    background: v.$color-primary !important;
+    color: v.$color-text-inverse !important;
+  }
+}

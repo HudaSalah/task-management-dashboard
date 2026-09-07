@@ -1,0 +1,25 @@
+<header class="app-header">
+  <div class="app-header__brand">
+    <span class="app-header__logo">
+      <mat-icon>dashboard</mat-icon>
+    </span>
+    <span class="app-header__title">Task Manager</span>
+  </div>
+
+  <div class="app-header__search">
+    <mat-icon class="app-header__search-icon">search</mat-icon>
+    <input
+      type="text"
+      class="app-header__search-input"
+      placeholder="Search tasks..."
+      aria-label="Search tasks"
+    />
+  </div>
+
+  <div class="app-header__actions">
+    <button mat-icon-button aria-label="Notifications">
+      <mat-icon>notifications_none</mat-icon>
+    </button>
+    <span class="app-header__avatar">{{ userInitials() }}</span>
+  </div>
+</header>

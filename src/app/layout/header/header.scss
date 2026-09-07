@@ -1,0 +1,101 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-lg;
+  height: 64px;
+  padding: 0 v.$spacing-xl;
+  background: v.$color-surface;
+  border-bottom: 1px solid v.$color-border;
+  box-sizing: border-box;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+    flex-shrink: 0;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: v.$radius-sm;
+    background: v.$color-primary;
+    color: v.$color-text-inverse;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__title {
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-primary;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-xs;
+    flex: 1;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0 v.$spacing-sm;
+    height: 36px;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius-md;
+    background: v.$color-page-background;
+  }
+
+  &__search-icon {
+    color: v.$color-text-secondary;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: v.$font-size-md;
+    font-family: v.$font-family-base;
+    color: v.$color-text-primary;
+
+    &::placeholder {
+      color: v.$color-text-secondary;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+    flex-shrink: 0;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: v.$color-primary;
+    color: v.$color-text-inverse;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-semibold;
+  }
+}
