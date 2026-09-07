@@ -1,0 +1,65 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$spacing-md;
+  padding: v.$spacing-sm v.$spacing-md;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-md;
+  margin-bottom: v.$spacing-lg;
+  flex-wrap: wrap;
+
+  &__tabs {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__tab {
+    border: none;
+    background: transparent;
+    padding: v.$spacing-xs v.$spacing-md;
+    border-radius: v.$radius-sm;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-medium;
+    color: v.$color-text-secondary;
+    cursor: pointer;
+    font-family: v.$font-family-base;
+
+    &:hover {
+      background: v.$color-page-background;
+    }
+
+    &--active {
+      background: v.$color-primary;
+      color: v.$color-text-inverse;
+
+      &:hover {
+        background: v.$color-primary;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+
+    // Material's default MDC buttons are fully pill-shaped; override to
+    // the tighter rounded-rectangle look the design uses.
+    button {
+      border-radius: v.$radius-sm !important;
+    }
+  }
+
+  &__new-task{
+    background: v.$color-primary !important;
+    color: v.$color-text-inverse !important;
+  }
+}

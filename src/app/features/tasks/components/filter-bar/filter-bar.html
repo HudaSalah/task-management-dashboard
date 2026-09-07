@@ -1,0 +1,31 @@
+<div class="filter-bar">
+  <div class="filter-bar__tabs">
+    @for (tab of statusTabs; track tab.value) {
+      <button
+        type="button"
+        class="filter-bar__tab"
+        [class.filter-bar__tab--active]="filters().status === tab.value"
+        (click)="setStatus(tab.value)"
+      >
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+
+  <div class="filter-bar__actions">
+    <button mat-stroked-button [matMenuTriggerFor]="priorityMenu">
+      {{ priorityButtonLabel() }}
+      <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #priorityMenu="matMenu">
+      @for (option of priorityOptions; track option.value) {
+        <button mat-menu-item (click)="setPriority(option.value)">{{ option.label }}</button>
+      }
+    </mat-menu>
+
+    <button mat-raised-button color="primary" class="filter-bar__new-task" (click)="newTask.emit()">
+      <mat-icon>add</mat-icon>
+      New Task
+    </button>
+  </div>
+</div>
