@@ -1,0 +1,111 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.task-card {
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  box-shadow: none;
+  margin-bottom: v.$spacing-md;
+
+  &--overdue {
+    background: v.$color-overdue-bg;
+    border-left: 3px solid v.$color-overdue-border;
+    border-radius: 0 v.$radius-md v.$radius-md 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-sm;
+    padding: v.$spacing-md !important;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    color: v.$color-text-secondary;
+    width: 28px !important;
+    height: 28px !important;
+    line-height: 28px !important;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: v.$font-size-md;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+    line-height: v.$line-height-tight;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+    line-height: v.$line-height-base;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: v.$font-size-xs;
+  }
+
+  &__due {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: v.$color-text-secondary;
+  }
+
+  &__due-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+
+    &--success {
+      color: v.$color-success;
+    }
+  }
+
+  &__tag {
+    color: v.$color-text-secondary;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-xs + 2px;
+    margin-top: v.$spacing-xs;
+    padding-top: v.$spacing-sm;
+    border-top: 1px solid v.$color-border;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: v.$color-text-inverse;
+    font-size: 10px;
+    font-weight: v.$font-weight-semibold;
+  }
+
+  &__assignee-name {
+    font-size: v.$font-size-xs;
+    color: v.$color-text-secondary;
+  }
+}

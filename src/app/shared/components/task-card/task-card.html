@@ -1,0 +1,43 @@
+<mat-card appearance="outlined" class="task-card" [class.task-card--overdue]="dueInfo().isOverdue">
+  <mat-card-content class="task-card__content">
+    <div class="task-card__top">
+      <app-priority-badge [priority]="task().priority" />
+      <button mat-icon-button class="task-card__menu" aria-label="Task actions" [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="edit.emit(task())">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="delete.emit(task())">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <h3 class="task-card__title">{{ task().title }}</h3>
+    <p class="task-card__description">{{ task().description }}</p>
+
+    <div class="task-card__meta">
+      <span class="task-card__due">
+        <mat-icon
+          class="task-card__due-icon"
+          [class.task-card__due-icon--success]="dueInfo().icon === 'check_circle'"
+        >{{ dueInfo().icon }}</mat-icon>
+        {{ dueInfo().label }}
+      </span>
+      @if (task().tags.length > 0) {
+        <span class="task-card__tag">{{ task().tags.join(', ') }}</span>
+      }
+    </div>
+
+    <div class="task-card__footer">
+      <span class="task-card__avatar" [style.background]="avatarColor()">
+        {{ task().assignee.avatar }}
+      </span>
+      <span class="task-card__assignee-name">&#64;{{ assigneeFirstName() }}</span>
+    </div>
+  </mat-card-content>
+</mat-card>

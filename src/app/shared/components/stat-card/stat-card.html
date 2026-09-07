@@ -1,0 +1,15 @@
+<mat-card appearance="outlined" class="stat-card" [style.--accent-color]="statistic().color">
+  <mat-card-content class="stat-card__content">
+    <div class="stat-card__header">
+      <span class="stat-card__icon" aria-hidden="true">{{ statistic().icon }}</span>
+      <span class="stat-card__title">{{ statistic().title }}</span>
+    </div>
+
+    <div class="stat-card__value">{{ statistic().value }}</div>
+
+    <div class="stat-card__change" [class]="changeClass()">
+      <span class="stat-card__change-value">{{ statistic().change }}</span>
+      <span class="stat-card__change-label">{{ statistic().changeLabel }}</span>
+    </div>
+  </mat-card-content>
+</mat-card>

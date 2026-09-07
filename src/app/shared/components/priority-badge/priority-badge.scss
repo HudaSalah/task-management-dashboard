@@ -1,0 +1,31 @@
+@use 'variables' as v;
+
+:host {
+  display: inline-flex;
+}
+
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: v.$radius-sm;
+  font-size: 10px;
+  font-weight: v.$font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+
+  &--high {
+    color: v.$color-priority-high;
+    background: v.$color-priority-high-bg;
+  }
+
+  &--medium {
+    color: v.$color-priority-medium;
+    background: v.$color-priority-medium-bg;
+  }
+
+  &--low {
+    color: v.$color-priority-low;
+    background: v.$color-priority-low-bg;
+  }
+}

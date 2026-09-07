@@ -1,0 +1,69 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.stat-card {
+  border-radius: v.$radius-md;
+  border: none;
+  box-shadow: v.$shadow-card;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-md;
+    padding: v.$spacing-lg v.$spacing-xl !important;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-xs + 2px;
+    color: v.$color-text-secondary;
+    font-size: v.$font-size-sm;
+  }
+
+  &__icon {
+    font-size: v.$font-size-md;
+    line-height: 1;
+  }
+
+  &__title {
+    font-weight: v.$font-weight-medium;
+  }
+
+  &__value {
+    font-size: v.$font-size-display;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text-primary;
+    line-height: v.$line-height-tight;
+  }
+
+  &__change {
+    display: flex;
+    align-items: baseline;
+    gap: v.$spacing-xs;
+    font-size: v.$font-size-xs;
+
+    &-value {
+      font-weight: v.$font-weight-semibold;
+    }
+
+    &-label {
+      color: v.$color-text-secondary;
+    }
+
+    &--positive &-value {
+      color: v.$color-success;
+    }
+
+    &--negative &-value {
+      color: v.$color-danger;
+    }
+
+    &--neutral &-value {
+      color: v.$color-neutral;
+    }
+  }
+}
