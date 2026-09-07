@@ -1,0 +1,63 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.dashboard {
+  flex: 1;
+  min-width: 0;
+  padding: v.$spacing-xl;
+  background: v.$color-page-background;
+  box-sizing: border-box;
+  font-family: v.$font-family-base;
+
+  &__title {
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+    margin: 0 0 v.$spacing-lg;
+  }
+
+  &__stats-row {
+    display: flex;
+    gap: v.$spacing-md;
+    flex-wrap: wrap;
+    margin-bottom: v.$spacing-xl;
+
+    // Targets the <app-stat-card> host tag directly. This works without
+    // ::ng-deep because Angular's emulated view encapsulation stamps the
+    // PARENT's content attribute onto a child component's host element,
+    // so a plain element selector here still matches it.
+    app-stat-card {
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+  }
+
+  &__board {
+    display: flex;
+    gap: v.$spacing-lg;
+    align-items: stretch;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}
