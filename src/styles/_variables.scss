@@ -1,0 +1,14 @@
+// =============================================================================
+// Central entry point for design tokens.
+// Any component that needs a color, font, or spacing value does:
+//
+//   @use 'variables' as v;
+//   .my-class { color: v.$color-text-primary; }
+//
+// This works from any file because `stylePreprocessorOptions.includePaths`
+// in angular.json points at `src/styles` (see setup note below).
+// =============================================================================
+
+@forward 'colors';
+@forward 'typography';
+@forward 'spacing';

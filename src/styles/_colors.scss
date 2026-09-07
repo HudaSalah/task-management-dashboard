@@ -1,0 +1,48 @@
+// =============================================================================
+// Color tokens
+// Single source of truth for every color used across the app.
+// Never hardcode a hex value inside a component's .scss — add it here first.
+// =============================================================================
+
+// --- Brand / primary ---
+$color-primary: #1976D2;
+$color-primary-light: #eff6ff;
+
+// --- Text ---
+$color-text-primary: #111827;   // headings, big numbers
+$color-text-secondary: #6b7280; // labels, captions, muted text
+$color-text-inverse: #ffffff;   // text on dark/colored backgrounds
+
+// --- Surfaces ---
+$color-surface: #ffffff;        // card backgrounds
+$color-page-background: #f3f4f6;
+$color-border: rgba(0, 0, 0, 0.08);
+
+// --- Status / semantic colors ---
+// Used for change indicators, badges, and anywhere meaning is color-coded.
+$color-success: #16a34a;
+$color-danger: #dc2626;
+$color-warning: #f59e0b;
+$color-neutral: #6b7280;
+
+// --- Priority colors (task cards) ---
+$color-priority-high: #dc2626;
+$color-priority-medium: #d97706;
+$color-priority-low: #16a34a;
+
+$color-priority-high-bg: #fee2e2;
+$color-priority-medium-bg: #fef3c7;
+$color-priority-low-bg: #dcfce7;
+
+// --- Overdue task card highlight ---
+$color-overdue-bg: #fef2f2;
+$color-overdue-border: #dc2626;
+
+// --- Statistic accent colors ---
+// These mirror the `color` field the mock API returns for each statistic
+// card (see DATA_README.md). Kept here too so any hardcoded fallback
+// stays in sync with the palette rather than drifting.
+$color-stat-total: #1976d2;
+$color-stat-completed: #388e3c;
+$color-stat-in-progress: #ff6f00;
+$color-stat-overdue: #d32f2f;
