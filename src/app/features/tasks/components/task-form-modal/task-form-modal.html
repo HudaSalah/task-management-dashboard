@@ -1,0 +1,98 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit Task' : 'New Task' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-dialog-content class="task-form">
+    <mat-form-field appearance="outline" class="task-form__field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="e.g. Design new homepage layout" />
+      @if (titleControl.invalid && titleControl.touched) {
+        <mat-error>
+          @if (titleControl.hasError('required') || titleControl.hasError('whitespace')) {
+            Title is required.
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="task-form__field">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        rows="3"
+        placeholder="What needs to be done?"
+      ></textarea>
+      @if (descriptionControl.invalid && descriptionControl.touched) {
+        <mat-error>
+          @if (descriptionControl.hasError('required')) {
+            Description is required.
+          } @else if (descriptionControl.hasError('minlength')) {
+            Description must be at least 10 characters.
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <div class="task-form__row">
+      <mat-form-field appearance="outline" class="task-form__field">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          @for (p of priorities; track p) {
+            <mat-option [value]="p">{{ p }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="task-form__field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          @for (s of statuses; track s) {
+            <mat-option [value]="s">{{ s }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="task-form__row">
+      <mat-form-field appearance="outline" class="task-form__field">
+        <mat-label>Due date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        @if (dueDateControl.invalid && dueDateControl.touched) {
+          <mat-error>
+            @if (dueDateControl.hasError('required')) {
+              Due date is required.
+            } @else if (dueDateControl.hasError('pastDate')) {
+              Due date can't be in the past.
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="task-form__field">
+        <mat-label>Assignee</mat-label>
+        <mat-select formControlName="assigneeId">
+          @for (user of users; track user.id) {
+            <mat-option [value]="user.id">{{ user.name }}</mat-option>
+          }
+        </mat-select>
+        @if (assigneeIdControl.invalid && assigneeIdControl.touched) {
+          <mat-error>Please choose an assignee.</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="task-form__field">
+      <mat-label>Tags (comma-separated)</mat-label>
+      <input matInput formControlName="tags" placeholder="e.g. Backend, Critical" />
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Save Changes' : 'Create Task' }}
+    </button>
+  </mat-dialog-actions>
+</form>

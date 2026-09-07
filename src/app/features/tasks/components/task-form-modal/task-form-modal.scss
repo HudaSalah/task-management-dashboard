@@ -1,0 +1,26 @@
+@use 'variables' as v;
+
+:host {
+  display: block;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+  min-width: 420px;
+  padding-top: v.$spacing-xs;
+
+  &__field {
+    width: 100%;
+  }
+
+  &__row {
+    display: flex;
+    gap: v.$spacing-md;
+
+    .task-form__field {
+      flex: 1;
+    }
+  }
+}
