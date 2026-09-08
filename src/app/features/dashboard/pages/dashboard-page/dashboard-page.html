@@ -1,3 +1,5 @@
+<!-- <h1 class="dashboard-page__title">Dashboard</h1> -->
+
 @if (isLoading()) {
   <div class="dashboard-page__state">
     <mat-spinner diameter="36" />
@@ -14,4 +16,7 @@
       <app-stat-card [statistic]="stat" />
     }
   </div>
+
+  <!-- <h2 class="dashboard-page__section-title">Tasks</h2> -->
+  <app-task-board />
 }

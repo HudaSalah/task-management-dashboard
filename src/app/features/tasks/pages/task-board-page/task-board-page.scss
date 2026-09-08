@@ -4,30 +4,9 @@
   display: block;
 }
 
-.task-board-page {
-  &__title {
-    font-size: v.$font-size-xl;
-    font-weight: v.$font-weight-semibold;
-    color: v.$color-text-primary;
-    margin: 0 0 v.$spacing-lg;
-  }
-
-  &__board {
-    display: flex;
-    gap: v.$spacing-lg;
-    align-items: stretch;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
-  }
-
-  &__state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: v.$spacing-md;
-    padding: v.$spacing-xl * 2 0;
-    color: v.$color-text-secondary;
-  }
+.task-board-page__title {
+  font-size: v.$font-size-xl;
+  font-weight: v.$font-weight-semibold;
+  color: v.$color-text-primary;
+  margin: 0 0 v.$spacing-lg;
 }

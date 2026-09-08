@@ -16,11 +16,19 @@
     display: flex;
     gap: v.$spacing-md;
     flex-wrap: wrap;
+    margin-bottom: v.$spacing-xl;
 
     app-stat-card {
       flex: 1 1 200px;
       min-width: 200px;
     }
+  }
+
+  &__section-title {
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+    margin: v.$spacing-xl 0 v.$spacing-lg;
   }
 
   &__state {

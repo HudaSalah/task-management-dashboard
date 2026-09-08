@@ -3,9 +3,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { StatCard } from '../../../../shared/components/stat-card/stat-card';
 import { TaskService } from '../../../../core/services/TaskService';
- 
+ import { TaskBoard } from '../../../tasks/components/task-board/task-board';
+
 @Component({
-  imports: [MatProgressSpinnerModule, MatButtonModule, StatCard],
+  imports: [MatProgressSpinnerModule, MatButtonModule, StatCard, TaskBoard],
   selector: 'app-dashboard-page',
   styleUrl: './dashboard-page.scss',
   templateUrl: './dashboard-page.html',
