@@ -82,7 +82,7 @@ export class AnalyticsPage {
               }
             ]
           },
-          options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+          options: {maintainAspectRatio: false, responsive: true, plugins: { legend: { position: 'bottom' } } }
         });
       }
     });
@@ -110,6 +110,7 @@ export class AnalyticsPage {
             ]
           },
           options: {
+            maintainAspectRatio: false,
             responsive: true,
             plugins: { legend: { display: false } },
             scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
