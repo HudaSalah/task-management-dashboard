@@ -7,15 +7,20 @@ describe('PriorityBadge', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PriorityBadge],
+      imports: [PriorityBadge]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PriorityBadge);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.componentRef.setInput('priority', 'high');
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('renders the priority label', () => {
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain('high');
   });
 });
