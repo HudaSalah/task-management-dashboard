@@ -10,6 +10,11 @@ export const routes: Routes = [
     path: 'tasks',
     loadChildren: () => import('./features/tasks/tasks.routes').then((m) => m.TASKS_ROUTES)
   },
+  {
+    path: 'analytics',
+    loadChildren: () =>
+      import('./features/analytics/analytics.routes').then((m) => m.ANALYTICS_ROUTES)
+  },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'dashboard' }
 ];

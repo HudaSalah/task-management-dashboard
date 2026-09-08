@@ -27,7 +27,7 @@ export class Sidebar {
     { icon: 'dashboard', label: 'Dashboard', color: '#2563eb', route: '/dashboard' },
     { icon: 'check_circle', label: 'Tasks', color: '#16a34a', route: '/tasks' },
     { icon: 'calendar_today', label: 'Calendar', color: '#b45309' },
-    { icon: 'bar_chart', label: 'Analytics', color: '#9333ea' },
+    { icon: 'bar_chart', label: 'Analytics', color: '#9333ea' , route: '/analytics'},
     { icon: 'group', label: 'Team', color: '#1e3a8a' },
     { icon: 'settings', label: 'Settings', color: '#6b7280' }
   ];
