@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TaskPriority } from '../../models/task.model';
 
-
 @Component({
   imports: [],
   selector: 'app-priority-badge',

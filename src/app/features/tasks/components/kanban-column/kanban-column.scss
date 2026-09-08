@@ -1,6 +1,5 @@
 @use 'variables' as v;
 
-
 :host {
   display: flex;
   flex-direction: column;
@@ -25,7 +24,7 @@
     gap: v.$spacing-xs + 2px;
     margin-bottom: v.$spacing-md;
     padding-bottom: v.$spacing-xs;
-   border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
   }
 
   &__dot {

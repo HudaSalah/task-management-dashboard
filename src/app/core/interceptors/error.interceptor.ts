@@ -22,12 +22,17 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     retry({
       count: MAX_RETRIES,
       delay: (_error, retryCount) => {
-        console.warn(`Request to ${req.urlWithParams} failed — retrying (${retryCount}/${MAX_RETRIES})…`);
+        console.warn(
+          `Request to ${req.urlWithParams} failed — retrying (${retryCount}/${MAX_RETRIES})…`
+        );
         return timer(retryCount * 500); // 500ms, then 1000ms
       }
     }),
     catchError((error: HttpErrorResponse) => {
-      console.error(`Request to ${req.urlWithParams} failed after ${MAX_RETRIES} retries:`, error.message);
+      console.error(
+        `Request to ${req.urlWithParams} failed after ${MAX_RETRIES} retries:`,
+        error.message
+      );
       return throwError(() => error);
     })
   );

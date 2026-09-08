@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
- 
+
 /**
  * Fails if the control's value is empty or contains only whitespace.
  * `Validators.required` alone would accept a title of "   ", which is
@@ -11,7 +11,7 @@ export function noWhitespaceValidator(): ValidatorFn {
     return value.trim().length === 0 ? { whitespace: true } : null;
   };
 }
- 
+
 /**
  * Fails if the given date string (YYYY-MM-DD, as produced by a
  * `<input type="date">` or Material datepicker) is earlier than today.

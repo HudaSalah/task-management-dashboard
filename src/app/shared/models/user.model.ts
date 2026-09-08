@@ -1,5 +1,5 @@
 import { Assignee } from './task.model';
- 
+
 /**
  * A user who can be assigned to tasks. Structurally identical to
  * `Assignee` — kept as a separate named type so "the list of all users"

@@ -7,6 +7,4 @@ import { TaskBoard } from '../../components/task-board/task-board';
   templateUrl: './task-board-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskBoardPage {
- 
-}
+export class TaskBoardPage {}

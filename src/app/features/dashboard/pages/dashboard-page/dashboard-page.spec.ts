@@ -12,7 +12,16 @@ const MOCK_TASKS_RESPONSE: TasksResponse = {
 
 const MOCK_STATISTICS_RESPONSE: StatisticsResponse = {
   statistics: [
-    { id: 'stat-001', title: 'Total Tasks', icon: '📊', value: 0, change: '0', changeLabel: 'this week', changeType: 'neutral', color: '#1976D2' }
+    {
+      id: 'stat-001',
+      title: 'Total Tasks',
+      icon: '📊',
+      value: 0,
+      change: '0',
+      changeLabel: 'this week',
+      changeType: 'neutral',
+      color: '#1976D2'
+    }
   ],
   lastUpdated: '2024-01-01T00:00:00.000Z'
 };

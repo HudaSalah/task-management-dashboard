@@ -32,7 +32,7 @@ const PRIORITY_OPTIONS: { value: PriorityFilter; label: string }[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterBar {
-    filters = input.required<TaskFilters>();
+  filters = input.required<TaskFilters>();
 
   filtersChange = output<TaskFilters>();
   newTask = output<void>();

@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { TaskService } from '../../../../core/services/TaskService';
- 
 
 /**
  * Analytics page: two Chart.js charts showing how tasks break down by
@@ -34,13 +33,13 @@ import { TaskService } from '../../../../core/services/TaskService';
 export class AnalyticsPage {
   private taskService = inject(TaskService);
   private destroyRef = inject(DestroyRef);
- 
+
   private statusCanvas = viewChild<ElementRef<HTMLCanvasElement>>('statusCanvas');
   private priorityCanvas = viewChild<ElementRef<HTMLCanvasElement>>('priorityCanvas');
- 
+
   private statusChart?: Chart;
   private priorityChart?: Chart;
- 
+
   private statusCounts = computed(() => {
     const tasks = this.taskService.tasks();
     return {
@@ -49,7 +48,7 @@ export class AnalyticsPage {
       done: tasks.filter((t) => t.status === 'done').length
     };
   });
- 
+
   private priorityCounts = computed(() => {
     const tasks = this.taskService.tasks();
     return {
@@ -58,7 +57,7 @@ export class AnalyticsPage {
       low: tasks.filter((t) => t.priority === 'low').length
     };
   });
- 
+
   constructor() {
     effect(() => {
       const statusEl = this.statusCanvas()?.nativeElement;
@@ -66,7 +65,7 @@ export class AnalyticsPage {
       if (!statusEl) {
         return; // view not ready yet — effect reruns once it is
       }
- 
+
       if (this.statusChart) {
         this.statusChart.data.datasets[0].data = [counts.todo, counts.inProgress, counts.done];
         this.statusChart.update();
@@ -82,18 +81,22 @@ export class AnalyticsPage {
               }
             ]
           },
-          options: {maintainAspectRatio: false, responsive: true, plugins: { legend: { position: 'bottom' } } }
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: { legend: { position: 'bottom' } }
+          }
         });
       }
     });
- 
+
     effect(() => {
       const priorityEl = this.priorityCanvas()?.nativeElement;
       const counts = this.priorityCounts();
       if (!priorityEl) {
         return;
       }
- 
+
       if (this.priorityChart) {
         this.priorityChart.data.datasets[0].data = [counts.high, counts.medium, counts.low];
         this.priorityChart.update();
@@ -118,7 +121,7 @@ export class AnalyticsPage {
         });
       }
     });
- 
+
     // Chart.js instances hold canvas/WebGL resources that outlive the
     // component unless explicitly destroyed — this is the manual cleanup
     // equivalent of unsubscribing from an RxJS subscription.

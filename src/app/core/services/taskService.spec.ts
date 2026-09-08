@@ -41,10 +41,46 @@ const MOCK_TASKS_RESPONSE: TasksResponse = {
 
 const MOCK_STATISTICS_RESPONSE: StatisticsResponse = {
   statistics: [
-    { id: 'stat-001', title: 'Total Tasks', icon: '📊', value: 999, change: '+1', changeLabel: 'this week', changeType: 'positive', color: '#1976D2' },
-    { id: 'stat-002', title: 'Completed', icon: '✅', value: 999, change: '+1', changeLabel: 'today', changeType: 'positive', color: '#388E3C' },
-    { id: 'stat-003', title: 'In Progress', icon: '🔄', value: 999, change: '0', changeLabel: 'Same as yesterday', changeType: 'neutral', color: '#FF6F00' },
-    { id: 'stat-004', title: 'Overdue', icon: '⚠️', value: 999, change: '+1', changeLabel: 'today', changeType: 'negative', color: '#D32F2F' }
+    {
+      id: 'stat-001',
+      title: 'Total Tasks',
+      icon: '📊',
+      value: 999,
+      change: '+1',
+      changeLabel: 'this week',
+      changeType: 'positive',
+      color: '#1976D2'
+    },
+    {
+      id: 'stat-002',
+      title: 'Completed',
+      icon: '✅',
+      value: 999,
+      change: '+1',
+      changeLabel: 'today',
+      changeType: 'positive',
+      color: '#388E3C'
+    },
+    {
+      id: 'stat-003',
+      title: 'In Progress',
+      icon: '🔄',
+      value: 999,
+      change: '0',
+      changeLabel: 'Same as yesterday',
+      changeType: 'neutral',
+      color: '#FF6F00'
+    },
+    {
+      id: 'stat-004',
+      title: 'Overdue',
+      icon: '⚠️',
+      value: 999,
+      change: '+1',
+      changeLabel: 'today',
+      changeType: 'negative',
+      color: '#D32F2F'
+    }
   ],
   lastUpdated: '2020-01-02T00:00:00.000Z'
 };

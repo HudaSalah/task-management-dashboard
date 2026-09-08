@@ -20,19 +20,18 @@ import { isTaskOverdue } from '../../shared/utils/task-date.utils';
  */
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-
   /** Raw resource for the tasks endpoint.*/
   private tasksResource = httpResource<TasksResponse>(() => '/data/tasks.json');
-  
-/** Raw resource for the statistics endpoint.*/
+
+  /** Raw resource for the statistics endpoint.*/
   private statisticsResource = httpResource<StatisticsResponse>(() => '/data/statistics.json');
 
   /** All tasks, or an empty array while loading / on error. */
   // tasks = computed<Task[]>(() => this.tasksResource.value()?.tasks ?? []);
 
-//   private logTasksResourceValue = effect(() => {
-//   console.log('tasksResourceValue', this.tasks());
-// });
+  //   private logTasksResourceValue = effect(() => {
+  //   console.log('tasksResourceValue', this.tasks());
+  // });
   /** All dashboard statistics, or an empty array while loading / on error. */
   // statistics = computed<Statistic[]>(() => this.statisticsResource.value()?.statistics ?? []);
 
@@ -42,10 +41,9 @@ export class TaskService {
   /** The first error encountered, if any, across both requests. */
   error = computed(() => this.tasksResource.error() ?? this.statisticsResource.error());
 
-
-    /** Local, mutable copy of the fetched tasks. Source of truth once loaded. */
+  /** Local, mutable copy of the fetched tasks. Source of truth once loaded. */
   private tasksSignal = signal<Task[]>([]);
- 
+
   constructor() {
     effect(() => {
       const response = this.tasksResource.value();
@@ -54,7 +52,7 @@ export class TaskService {
       }
     });
   }
- 
+
   /** All tasks. Read-only from the outside — use the CRUD methods below to mutate. */
   tasks = this.tasksSignal.asReadonly();
 
@@ -68,29 +66,26 @@ export class TaskService {
   addTask(task: Task): void {
     this.tasksSignal.update((tasks) => [task, ...tasks]);
   }
- 
+
   /** Replaces an existing task by id with its updated version. */
   updateTask(updated: Task): void {
     this.tasksSignal.update((tasks) => tasks.map((t) => (t.id === updated.id ? updated : t)));
   }
- 
+
   /** Removes a task by id. */
   deleteTask(id: string): void {
     this.tasksSignal.update((tasks) => tasks.filter((t) => t.id !== id));
   }
- 
+
   /** Moves a task to a new status — used by drag-and-drop between columns. */
   updateTaskStatus(id: string, status: TaskStatus): void {
     this.tasksSignal.update((tasks) =>
       tasks.map((task) =>
-        task.id === id
-          ? { ...task, status, updatedAt: new Date().toISOString() }
-          : task
+        task.id === id ? { ...task, status, updatedAt: new Date().toISOString() } : task
       )
     );
   }
 
-  
   /**
    * Dashboard statistics, with `value` recomputed live from the actual
    * task list — so it updates the moment a task is added, edited,
@@ -106,22 +101,21 @@ export class TaskService {
   statistics = computed<Statistic[]>(() => {
     const baseline = this.statisticsResource.value()?.statistics ?? [];
     const tasks = this.tasksSignal();
- 
+
     const liveValueByTitle: Record<string, number> = {
       'total tasks': tasks.length,
       completed: tasks.filter((t) => t.status === 'done').length,
       'in progress': tasks.filter((t) => t.status === 'in_progress').length,
       overdue: tasks.filter((t) => isTaskOverdue(t)).length
     };
- 
+
     return baseline.map((stat) => {
       const liveValue = liveValueByTitle[stat.title.toLowerCase()];
       return liveValue === undefined ? stat : { ...stat, value: liveValue };
     });
   });
 
-
-/**
+  /**
    * Live search query, typed in the Header (outside the router-outlet)
    * and read by the task board (inside a routed page). A shared signal
    * here is what lets those two unrelated components stay in sync
@@ -131,7 +125,7 @@ export class TaskService {
   private searchQuerySignal = signal<string>('');
   /** Current search text. Read-only — set it via `setSearchQuery`. */
   searchQuery = this.searchQuerySignal.asReadonly();
- 
+
   /** Updates the live search query. Called from the Header on every debounced keystroke. */
   setSearchQuery(query: string): void {
     this.searchQuerySignal.set(query);

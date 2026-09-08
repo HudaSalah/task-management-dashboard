@@ -2,7 +2,12 @@
   <mat-card-content class="task-card__content">
     <div class="task-card__top">
       <app-priority-badge [priority]="task().priority" />
-      <button mat-icon-button class="task-card__menu" aria-label="Task actions" [matMenuTriggerFor]="menu">
+      <button
+        mat-icon-button
+        class="task-card__menu"
+        aria-label="Task actions"
+        [matMenuTriggerFor]="menu"
+      >
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -25,7 +30,8 @@
         <mat-icon
           class="task-card__due-icon"
           [class.task-card__due-icon--success]="dueInfo().icon === 'check_circle'"
-        >{{ dueInfo().icon }}</mat-icon>
+          >{{ dueInfo().icon }}</mat-icon
+        >
         {{ dueInfo().label }}
       </span>
       @if (task().tags.length > 0) {

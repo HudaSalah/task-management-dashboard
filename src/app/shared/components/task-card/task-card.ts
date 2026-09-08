@@ -16,34 +16,27 @@ const AVATAR_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#06b6d4', '#
  */
 interface DueInfo {
   label: string;
-   icon: 'check_circle' | 'warning' | 'schedule';
+  icon: 'check_circle' | 'warning' | 'schedule';
   isOverdue: boolean;
 }
 
 @Component({
-  imports: [
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    PriorityBadge
-  ],
+  imports: [MatCardModule, MatIconModule, MatButtonModule, MatMenuModule, PriorityBadge],
   selector: 'app-task-card',
   styleUrl: './task-card.scss',
   templateUrl: './task-card.html',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskCard { 
-  
+export class TaskCard {
   task = input.required<Task>();
 
-    /** Emitted when the user picks "Edit" from the card's menu. */
+  /** Emitted when the user picks "Edit" from the card's menu. */
   edit = output<Task>();
 
   /** Emitted when the user picks "Delete" from the card's menu. */
   delete = output<Task>();
-  
+
   /** First name only, for the compact "@Sarah" footer label. */
   assigneeFirstName = computed(() => this.task().assignee.name.split(' ')[0]);
 
@@ -55,7 +48,7 @@ export class TaskCard {
   });
 
   /** Human-readable due-date status, derived purely from `dueDate`/`status`/`completedAt`. */
-   dueInfo = computed<DueInfo>(() => {
+  dueInfo = computed<DueInfo>(() => {
     const task = this.task();
 
     if (task.status === 'done') {
@@ -70,16 +63,23 @@ export class TaskCard {
 
     if (diffDays < 0) {
       const days = Math.abs(diffDays);
-      return { label: `Overdue by ${days} day${days === 1 ? '' : 's'}`, icon: 'warning', isOverdue: true };
+      return {
+        label: `Overdue by ${days} day${days === 1 ? '' : 's'}`,
+        icon: 'warning',
+        isOverdue: true
+      };
     }
     if (diffDays === 0) {
       return { label: 'Due today', icon: 'schedule', isOverdue: false };
     }
-    return { label: `Due in ${diffDays} day${diffDays === 1 ? '' : 's'}`, icon: 'schedule', isOverdue: false };
+    return {
+      label: `Due in ${diffDays} day${diffDays === 1 ? '' : 's'}`,
+      icon: 'schedule',
+      isOverdue: false
+    };
   });
 
   /** Whole-day difference between today and the given ISO date (negative = in the past). */
-
 
   private formatRelativeToToday(isoDateTime?: string): string {
     if (!isoDateTime) {
@@ -91,4 +91,3 @@ export class TaskCard {
     return `${Math.abs(diffDays)} days ago`;
   }
 }
-

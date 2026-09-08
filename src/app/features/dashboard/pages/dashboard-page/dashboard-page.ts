@@ -3,7 +3,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { StatCard } from '../../../../shared/components/stat-card/stat-card';
 import { TaskService } from '../../../../core/services/TaskService';
- import { TaskBoard } from '../../../tasks/components/task-board/task-board';
+import { TaskBoard } from '../../../tasks/components/task-board/task-board';
 
 @Component({
   imports: [MatProgressSpinnerModule, MatButtonModule, StatCard, TaskBoard],
@@ -14,11 +14,11 @@ import { TaskService } from '../../../../core/services/TaskService';
 })
 export class DashboardPage {
   private taskService = inject(TaskService);
- 
+
   statistics = this.taskService.statistics;
   isLoading = this.taskService.isLoading;
   error = this.taskService.error;
- 
+
   retry(): void {
     this.taskService.reload();
   }

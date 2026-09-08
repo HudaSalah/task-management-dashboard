@@ -10,10 +10,9 @@ import {
 import { TaskService } from './core/services/TaskService';
 import { UserService } from './core/services/user-service';
 import { Task } from './shared/models/task.model';
- 
+
 @Component({
-  imports: [RouterOutlet, Header,
-    Sidebar],
+  imports: [RouterOutlet, Header, Sidebar],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
@@ -24,13 +23,12 @@ export class App {
   private taskService = inject(TaskService);
   private userService = inject(UserService);
   private dialog = inject(MatDialog);
- 
+
   openCreateTaskDialog(): void {
-    const dialogRef = this.dialog.open<TaskFormModal, TaskFormDialogData, Task>(
-      TaskFormModal,
-      { data: { users: this.userService.users() } }
-    );
- 
+    const dialogRef = this.dialog.open<TaskFormModal, TaskFormDialogData, Task>(TaskFormModal, {
+      data: { users: this.userService.users() }
+    });
+
     dialogRef.afterClosed().subscribe((task) => {
       if (task) {
         this.taskService.addTask(task);
