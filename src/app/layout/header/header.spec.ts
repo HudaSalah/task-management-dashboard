@@ -7,7 +7,7 @@ describe('Header', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Header],
+      imports: [Header]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Header);
