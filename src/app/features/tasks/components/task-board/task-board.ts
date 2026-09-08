@@ -41,9 +41,19 @@ export class TaskBoard {
  
   filters = signal<TaskFilters>(DEFAULT_TASK_FILTERS);
  
-  private filteredTasks = computed(() => {
+ private filteredTasks = computed(() => {
     const { priority } = this.filters();
-    return this.taskService.tasks().filter((t) => priority === 'all' || t.priority === priority);
+    const query = this.taskService.searchQuery().trim().toLowerCase();
+
+    return this.taskService
+      .tasks()
+      .filter((t) => priority === 'all' || t.priority === priority)
+      .filter(
+        (t) =>
+          !query ||
+          t.title.toLowerCase().includes(query) ||
+          t.description.toLowerCase().includes(query)
+      );
   });
  
   showTodoColumn = computed(() => ['all', 'todo'].includes(this.filters().status));

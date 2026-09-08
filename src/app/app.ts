@@ -37,4 +37,8 @@ export class App {
       }
     });
   }
+
+  onSearch(query: string): void {
+    this.taskService.setSearchQuery(query);
+  }
 }

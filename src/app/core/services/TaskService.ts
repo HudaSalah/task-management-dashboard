@@ -119,4 +119,21 @@ export class TaskService {
       return liveValue === undefined ? stat : { ...stat, value: liveValue };
     });
   });
+
+
+/**
+   * Live search query, typed in the Header (outside the router-outlet)
+   * and read by the task board (inside a routed page). A shared signal
+   * here is what lets those two unrelated components stay in sync
+   * without threading the value through component inputs/outputs across
+   * the router boundary.
+   */
+  private searchQuerySignal = signal<string>('');
+  /** Current search text. Read-only — set it via `setSearchQuery`. */
+  searchQuery = this.searchQuerySignal.asReadonly();
+ 
+  /** Updates the live search query. Called from the Header on every debounced keystroke. */
+  setSearchQuery(query: string): void {
+    this.searchQuerySignal.set(query);
+  }
 }

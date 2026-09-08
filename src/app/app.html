@@ -1,5 +1,5 @@
 <div class="app-shell">
-  <app-header />
+  <app-header  (search)="onSearch($event)"/>
 
   <div class="app-shell__body">
     <app-sidebar (newTask)="openCreateTaskDialog()" />
